@@ -14,7 +14,6 @@ Below is the generated architecture diagram for the Fancy Store deployment:
   <!-- Ensure the image is in the same directory as this README or update the relative path below -->
   <img src="./Gemini_Generated_Image_o4nc1zo4nc1zo4nc.png" alt="Fancy Store Architecture" width="800">
   <br>
-  <em>(Source path: /home/student_04_91f43dbb354f/monolith-to-microservices/Gemini_Generated_Image_o4nc1zo4nc1zo4nc.png)</em>
 </div>
 
 ##  Interactive Deployment Checklist
