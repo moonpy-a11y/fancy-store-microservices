@@ -54,8 +54,6 @@ Click the sections below to track your deployment progress:
 * **[Google Kubernetes Engine (GKE) Documentation](https://cloud.google.com/kubernetes-engine/docs)**
 * **[Microservices Architecture on Google Cloud](https://cloud.google.com/learn/what-is-microservices-architecture)**
 
-## 👨‍💻 Author
-Refactored and maintained by **moonpy-ally**.
 
 ## 💻 Local Development
 To run these services locally outside of GKE, ensure you have Node.js installed and run `npm install` followed by `npm start` in the respective microservice directories.
