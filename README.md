@@ -1,116 +1,56 @@
-# Monolith to Microservices
+# Fancy Store E-Commerce Platform
 
-## NOTE: This is not an officially supported Google product
+[![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white)](https://cloud.google.com/docs)
+[![GKE](https://img.shields.io/badge/GKE-326CE5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)](https://cloud.google.com/kubernetes-engine/docs)
+[![Microservices](https://img.shields.io/badge/Microservices-8A2BE2.svg?style=for-the-badge&logo=docker&logoColor=white)](https://cloud.google.com/learn/what-is-microservices-architecture)
 
-## Introduction
+Welcome to the **Fancy Store** microservices repository! This project refactors a monolithic Node.js application into a modern microservices architecture running on Google Kubernetes Engine (GKE).
 
-### This project is used by the Google Cloud Platform team to demonstrate different services within Google Cloud. This project contains two versions of the same application, one architected as a monolith and the other as a set of microservices
+## Architecture Overview
 
-## Setup
+Below is the generated architecture diagram for the Fancy Store deployment:
 
-### **NOTE:** Make sure you have a newer version of NodeJS (16.13.0) or newer (in Cloud Shell you can run `nvm install --lts`)
+<div align="center">
+  <!-- Ensure the image is in the same directory as this README or update the relative path below -->
+  <img src="./Gemini_Generated_Image_o4nc1zo4nc1zo4nc.png" alt="Fancy Store Architecture" width="800">
+  <br>
+  <em>(Source path: /home/student_04_91f43dbb354f/monolith-to-microservices/Gemini_Generated_Image_o4nc1zo4nc1zo4nc.png)</em>
+</div>
 
-```bash
-git clone https://github.com/googlecodelabs/monolith-to-microservices
-cd monolith-to-microservices
-./setup.sh
-```
+##  Interactive Deployment Checklist
 
-## Monolith
+Click the sections below to track your deployment progress:
 
-### To run the monolith project use the following commands from the top level directory
+<details>
+<summary><b>1. Containerize the Applications (Click to expand)</b></summary>
+<br>
 
-```bash
-cd monolith
-npm start
-```
+- [x] Build Monolith image (`gcloud builds submit`)
+- [x] Build Orders microservice image
+- [x] Build Products microservice image
+- [x] Build Frontend microservice image
+</details>
 
-You should see output similar to the following
+<details>
+<summary><b>2. Provision GKE Infrastructure (Click to expand)</b></summary>
+<br>
 
-```text
-Monolith listening on port 8080!
-```
+- [x] Create a 3-node Kubernetes cluster (`fancy-cluster-619`)
+- [x] Authenticate `kubectl` with the new cluster
+</details>
 
-#### That's it! You now have a perfectly functioning monolith running on your machine
+<details>
+<summary><b>3. Deploy Services (Click to expand)</b></summary>
+<br>
 
-### Docker - Monolith
+- [x] Deploy Orders Service (Port 8081)
+- [x] Deploy Products Service (Port 8082)
+- [x] Reconfigure Frontend `.env` with microservice IP addresses
+- [x] Deploy Frontend Service (Port 8080)
+</details>
 
-#### To create a Docker image for the monolith, execute the following commands
+## 📚 Documentation References
 
-```bash
-cd monolith
-docker build -t monolith:1.0.0 .
-```
-
-To run the Docker image, execute the following commands
-
-```bash
-docker run --rm -p 8080:8080 monolith:1.0.0
-```
-
-## Microservices
-
-### To run the microservices project use the following commands from the top level directory
-
-```bash
-cd microservices
-npm start
-```
-
-You should see output similar to the following
-
-```text
-[0] Frontend microservice listening on port 8080!
-[2] Orders microservice listening on port 8081!
-[1] Products microservice listening on port 8082!
-```
-
-### That's it! You now have a perfectly functioning set of microservices running on your machine
-
-### Docker - Microservices
-
-### To create a Docker image for the microservices, you will have to create a Docker image for each service. Execute the following commands for each folder under the microservices folder
-
-```bash
-cd microservices/src/frontend
-docker build -t frontend:1.0.0 .
-
-cd ../products
-docker build -t products:1.0.0 .
-
-cd ../orders
-docker build -t orders:1.0.0 .
-```
-
-To run the Docker image, execute the following commands
-
-```bash
-docker run -d --rm -p 8080:8080 monolith:1.0.0
-docker run -d --rm -p 8081:8081 orders:1.0.0
-docker run -d --rm -p 8082:8082 products:1.0.0
-```
-
-#### To stop the containers, you will need to find the CONTAINER ID for each and stop them individually. See the steps below
-
-```bash
-docker ps -a
-
-CONTAINER ID        IMAGE                        COMMAND                CREATED
-4c01db0b339c        frontend:1.0.0               bash                   17 seconds ago
-d7886598dbe2        orders:1.0.0                 bash                   17 seconds ago
-d85756f57265        products:1.0.0               bash                   17 seconds ago
-
-docker stop 4c01db0b339c
-docker stop d7886598dbe2
-docker stop d85756f57265
-```
-
-## React App
-
-### The react-app folder contains a React application created from `create-react-app`. You can modify this fronted, but afterwards, you will need to build and move the static files to the monolith and microservices project. You can do this by running the standard create-react-app build command below
-
-```bash
-npm run build
-```
-
-#### This will run the build script to create the static files two times. The first will build with relative URLs and copy the static files to the monolith/public folder. The second run will build with the standard microservices URLs and copy the static files to the microservices/src/frontend/public folder
+* **[Google Cloud Overview](https://cloud.google.com/docs)**
+* **[Google Kubernetes Engine (GKE) Documentation](https://cloud.google.com/kubernetes-engine/docs)**
+* **[Microservices Architecture on Google Cloud](https://cloud.google.com/learn/what-is-microservices-architecture)**
